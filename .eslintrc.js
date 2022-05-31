@@ -1,17 +1,43 @@
 module.exports = {
   root: true,
   env: {
-    node: true
+    node: true,
   },
   extends: [
     'plugin:vue/vue3-essential',
-    '@vue/standard'
+    '@vue/standard',
   ],
+  globals: {
+    AMap: 'readonly',
+  },
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: 'babel-eslint',
   },
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
-  }
-}
+    curly: ['error', 'all'],
+    semi: ['error', 'always'],
+    quotes: ['error', 'single', {
+      avoidEscape: true,
+    }],
+    indent: ['error', 2, {
+      SwitchCase: 1,
+    }],
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'comma-dangle': ['error', 'always-multiline'],
+    'prefer-const': ['error', {
+      destructuring: 'all',
+      ignoreReadBeforeAssign: false,
+    }],
+    'arrow-parens': ['error', 'always'],
+    'space-before-function-paren': ['error', {
+      anonymous: 'always',
+      named: 'never',
+      asyncArrow: 'always',
+    }],
+    'import/extensions': ['error', 'ignorePackages', {
+      vue: 'never',
+      js: 'never',
+    }],
+  },
+};
